@@ -1,20 +1,25 @@
 @import 'tailwindcss';
 
-/* Design tokens — tema dark inspirado na paleta ácida de Rick and Morty */
+/* Design tokens — pop/cartoon: fundo lilás, tinta quase preta, acentos saturados */
 @theme {
-  --color-portal-200: #8ff5c8;
-  --color-portal-300: #5aebaa;
-  --color-portal-400: #2fe08d;
-  --color-portal-500: #17c973;
-  --color-portal-600: #0ea55c;
+  /* Tinta puxada para o roxo: um #000 puro ficaria duro ao lado do fundo lilás. */
+  --color-ink: #16121f;
+  --color-ink-soft: #4b4160;
 
-  --color-slime-400: #d7f34b;
-  --color-slime-500: #c2e029;
+  --color-paper: #e9e5f6;
+  --color-card: #ffffff;
 
-  --color-space-700: #1c2333;
-  --color-space-800: #151b28;
-  --color-space-900: #0e131d;
-  --color-space-950: #080c14;
+  /* Cada acento tem um papel fixo, não é decoração:
+     verde = selo do episódio, lilás = data, amarelo = personagens. */
+  --color-portal: #3ee08d;
+  --color-blip: #ffd93d;
+  --color-plasma: #c4b5fd;
+
+  /* Semântico, reservado para erro. */
+  --color-alert: #ff8a8a;
+
+  --font-display: 'Fredoka', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Nunito Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -23,22 +28,19 @@
   }
 
   body {
-    @apply bg-space-950 text-slate-300 antialiased;
-    background-image:
-      radial-gradient(
-        ellipse 80% 50% at 50% -10%,
-        color-mix(in oklab, var(--color-portal-500) 16%, transparent),
-        transparent
-      ),
-      radial-gradient(
-        ellipse 60% 40% at 90% 5%,
-        color-mix(in oklab, var(--color-slime-400) 7%, transparent),
-        transparent
-      );
-    background-attachment: fixed;
+    @apply bg-paper text-ink font-sans antialiased;
   }
 
   :focus-visible {
-    @apply outline-portal-400 outline-2 outline-offset-2;
+    @apply outline-ink outline-[3px] outline-offset-2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
