@@ -44,7 +44,7 @@ A aplicação sobe em **http://localhost:3005**.
 | TanStack Query 5 | Cache de dados remotos, estados de loading/erro |
 | Zustand 5 (+ `persist`) | Favoritos e vistos, persistidos em `localStorage` |
 | React Router 7 | Navegação |
-| Tailwind CSS 4 | Estilo e responsividade |
+| CSS Modules | Estilo e responsividade (nativo do Vite, sem dependência) |
 
 
 ---

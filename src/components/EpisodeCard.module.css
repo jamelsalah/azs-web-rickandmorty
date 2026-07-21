@@ -1,0 +1,68 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  background-color: var(--color-card);
+  border: 3px solid var(--color-ink);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 var(--color-ink);
+  transition:
+    translate 150ms,
+    box-shadow 150ms;
+}
+
+/* `translate` e não `transform`: é a propriedade CSS independente que o card usa.
+   O @media evita o hover "grudado" em tela de toque. */
+@media (hover: hover) {
+  .card:hover {
+    translate: -3px -3px;
+    box-shadow: 9px 9px 0 var(--color-ink);
+  }
+}
+
+.code {
+  width: fit-content;
+  padding: 2px 11px;
+  background-color: var(--color-portal);
+  border: 2.5px solid var(--color-ink);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 800;
+}
+
+.title {
+  margin-top: 14px;
+  margin-bottom: 10px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* margin-top auto alinha os rodapés mesmo com títulos de alturas diferentes. */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.chip {
+  padding: 2px 8px;
+  border: 2.5px solid var(--color-ink);
+  border-radius: 9px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+}
+
+.chipDate {
+  background-color: var(--color-plasma);
+}
+
+.chipCharacters {
+  background-color: var(--color-blip);
+  font-variant-numeric: tabular-nums;
+}

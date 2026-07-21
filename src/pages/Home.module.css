@@ -1,0 +1,103 @@
+.page {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: 40px 24px;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.count {
+  display: inline-block;
+  padding: 4px 14px;
+  background-color: var(--color-blip);
+  border: 2.5px solid var(--color-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--color-ink);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+}
+
+.title {
+  margin-top: 18px;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.subtitle {
+  margin-top: 6px;
+  color: var(--color-ink-soft);
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 22px;
+}
+
+.error {
+  padding: 40px;
+  text-align: center;
+  background-color: var(--color-card);
+  border: 3px solid var(--color-ink);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 var(--color-ink);
+}
+
+.errorBadge {
+  display: inline-block;
+  padding: 2px 12px;
+  background-color: var(--color-alert);
+  border: 2.5px solid var(--color-ink);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 800;
+}
+
+.errorTitle {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.errorMessage {
+  margin-top: 8px;
+  color: var(--color-ink-soft);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+}
+
+.skeletonCard {
+  height: 150px;
+  background-color: rgb(255 255 255 / 0.5);
+  border: 3px solid var(--color-ink);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 var(--color-ink);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Mesma curva e duração do animate-pulse do Tailwind. */
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Equivalente ao breakpoint "sm" do Tailwind. */
+@media (min-width: 640px) {
+  .page {
+    padding-block: 56px;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+}

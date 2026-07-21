@@ -1,15 +1,24 @@
-@import 'tailwindcss';
+/* Reset mínimo — vinha de graça no preflight do Tailwind. Sem ele, h1/h2/p
+   voltam a ter as margens padrão do navegador e o layout muda sozinho. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-/* Design tokens — pop/cartoon: fundo lilás, tinta quase preta, acentos saturados */
-@theme {
-  /* Tinta puxada para o roxo: um #000 puro ficaria duro ao lado do fundo lilás. */
+* {
+  margin: 0;
+}
+
+:root {
+  /* Tinta puxada para o roxo: um #000 puro ficaria duro ao lado do lilás. */
   --color-ink: #16121f;
   --color-ink-soft: #4b4160;
 
   --color-paper: #e9e5f6;
   --color-card: #ffffff;
 
-  /* Cada acento tem um papel fixo, não é decoração:
+  /* Cada acento tem papel fixo, não é decoração:
      verde = selo do episódio, lilás = data, amarelo = personagens. */
   --color-portal: #3ee08d;
   --color-blip: #ffd93d;
@@ -20,20 +29,38 @@
 
   --font-display: 'Fredoka', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Nunito Sans', ui-sans-serif, system-ui, sans-serif;
+
+  color-scheme: light;
 }
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  body {
-    @apply bg-paper text-ink font-sans antialiased;
-  }
+body {
+  min-height: 100dvh;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  :focus-visible {
-    @apply outline-ink outline-[3px] outline-offset-2;
-  }
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
