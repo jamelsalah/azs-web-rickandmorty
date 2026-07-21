@@ -27,6 +27,11 @@
   /* Semântico, reservado para erro. */
   --color-alert: #ff8a8a;
 
+  /* Estado do usuário: as cores acima têm dono, e o --color-portal some
+     quando vira traço fino num card branco. */
+  --color-heart: #ff4d6d;
+  --color-watched: #0e9f6e;
+
   --font-display: 'Fredoka', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Nunito Sans', ui-sans-serif, system-ui, sans-serif;
 
