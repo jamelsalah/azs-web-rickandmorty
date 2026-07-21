@@ -15,6 +15,7 @@
    O @media evita o hover "grudado" em tela de toque. */
 @media (hover: hover) {
   .card:hover {
+    cursor: pointer;
     translate: -3px -3px;
     box-shadow: 9px 9px 0 var(--color-ink);
   }
