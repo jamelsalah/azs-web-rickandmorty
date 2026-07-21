@@ -59,7 +59,9 @@ export function Home() {
       )}
 
       {data?.episodes.length === 0 && (
-        <p>Nenhum episódio encontrado para “{debouncedSearchTerm}”.</p>
+        <p className={styles.emptyState}>
+          Nenhum episódio encontrado para “{debouncedSearchTerm}”.
+        </p>
       )}
 
       {data && data.totalPages > 1 && (

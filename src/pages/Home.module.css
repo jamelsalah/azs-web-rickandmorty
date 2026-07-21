@@ -75,6 +75,18 @@
   font-weight: 600;
 }
 
+/* Borda tracejada comunica "vazio" sem precisar de mais nenhum elemento.
+   Busca sem resultado não é erro, então vem sem sombra e sem peso. */
+.emptyState {
+  padding: 36px;
+  text-align: center;
+  color: var(--color-ink-soft);
+  background-color: var(--color-card);
+  border: 3px dashed var(--color-ink);
+  border-radius: 18px;
+  font-weight: 700;
+}
+
 .skeletonCard {
   height: 150px;
   background-color: rgb(255 255 255 / 0.5);
