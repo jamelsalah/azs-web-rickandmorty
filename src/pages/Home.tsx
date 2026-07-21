@@ -1,12 +1,19 @@
+import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 
 import { episodesQuery } from '@/api/episodes'
 import { EpisodeCard } from '@/components/EpisodeCard'
+import { SearchField } from '@/components/SearchField'
+import { useDebouncedValue } from '@/hooks/useDebouncedValue'
 
 import styles from './Home.module.css'
 
 export function Home() {
-  const { data, isPending, isError, error } = useQuery(episodesQuery(1, ''))
+  const [searchTerm, setSearchTerm] = useState('')
+  const debouncedSearchTerm = useDebouncedValue(searchTerm, 400)
+  const { data, isPending, isError, error } = useQuery(
+    episodesQuery(1, debouncedSearchTerm),
+  )
 
   return (
     <div className={styles.page}>
@@ -21,6 +28,8 @@ export function Home() {
           Todos os episódios, de C-137 até onde der.
         </p>
       </header>
+
+      <SearchField value={searchTerm} onChange={setSearchTerm} />
 
       {isPending && <EpisodeGridSkeleton />}
 
@@ -38,6 +47,10 @@ export function Home() {
             <EpisodeCard key={episode.id} episode={episode} />
           ))}
         </div>
+      )}
+
+      {data?.episodes.length === 0 && (
+        <p>Nenhum episódio encontrado para “{debouncedSearchTerm}”.</p>
       )}
     </div>
   )
