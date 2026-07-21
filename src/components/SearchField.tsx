@@ -1,3 +1,5 @@
+import styles from './SearchField.module.css'
+
 interface SearchFieldProps {
   value: string
   onChange: (newValue: string) => void
@@ -6,6 +8,7 @@ interface SearchFieldProps {
 export function SearchField({ value, onChange }: SearchFieldProps) {
   return (
     <input
+      className={styles.field}
       type="search"
       value={value}
       onChange={(event) => onChange(event.target.value)}
