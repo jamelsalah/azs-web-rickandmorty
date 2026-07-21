@@ -19,6 +19,7 @@ dist-ssr
 
 # Contexto local do Claude Code (não faz parte da entrega)
 CLAUDE.md
+HANDOFF.md
 .claude/
 
 # Editor directories and files
