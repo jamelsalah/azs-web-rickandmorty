@@ -27,15 +27,16 @@ export function Home() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <span className={styles.count}>
-          {data ? `${data.totalCount} episódios` : 'Carregando…'}
-        </span>
 
         <h1 className={styles.title}>Rick and Morty</h1>
 
         <p className={styles.subtitle}>
           Todos os episódios, de C-137 até onde der.
         </p>
+        
+        <span className={styles.count}>
+          {data ? `${data.totalCount} episódios` : 'Carregando…'}
+        </span>
       </header>
 
       <SearchField value={searchTerm} onChange={handleSearchTermChange} />
