@@ -31,7 +31,7 @@ export function Home() {
         <h1 className={styles.title}>Rick and Morty</h1>
 
         <p className={styles.subtitle}>
-          Todos os episódios, de C-137 até onde der.
+          Navegue, busque e favorite os episódios da série.
         </p>
         
         <span className={styles.count}>
