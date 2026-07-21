@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { episodesQuery } from '@/api/episodes'
 import { EpisodeCard } from '@/components/EpisodeCard'
+import { Pagination } from '@/components/Pagination'
 import { SearchField } from '@/components/SearchField'
 import { useDebouncedValue } from '@/hooks/useDebouncedValue'
 
@@ -10,10 +11,18 @@ import styles from './Home.module.css'
 
 export function Home() {
   const [searchTerm, setSearchTerm] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
   const debouncedSearchTerm = useDebouncedValue(searchTerm, 400)
   const { data, isPending, isError, error } = useQuery(
-    episodesQuery(1, debouncedSearchTerm),
+    episodesQuery(currentPage, debouncedSearchTerm),
   )
+
+  // Mudar o termo tem que voltar para a página 1: a página 3 não existe
+  // quando a busca sobra um resultado só.
+  function handleSearchTermChange(newSearchTerm: string) {
+    setSearchTerm(newSearchTerm)
+    setCurrentPage(1)
+  }
 
   return (
     <div className={styles.page}>
@@ -29,7 +38,7 @@ export function Home() {
         </p>
       </header>
 
-      <SearchField value={searchTerm} onChange={setSearchTerm} />
+      <SearchField value={searchTerm} onChange={handleSearchTermChange} />
 
       {isPending && <EpisodeGridSkeleton />}
 
@@ -51,6 +60,14 @@ export function Home() {
 
       {data?.episodes.length === 0 && (
         <p>Nenhum episódio encontrado para “{debouncedSearchTerm}”.</p>
+      )}
+
+      {data && data.totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={data.totalPages}
+          onPageChange={setCurrentPage}
+        />
       )}
     </div>
   )
