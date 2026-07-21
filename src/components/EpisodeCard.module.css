@@ -1,4 +1,7 @@
 .card {
+  /* Piso fixo: reserva o espaço do 2º chip ("Visto") em todos os cards, para
+     que marcar um episódio não estique a linha inteira do grid. */
+  min-height: 205px;
   display: flex;
   flex-direction: column;
   padding: 18px;
