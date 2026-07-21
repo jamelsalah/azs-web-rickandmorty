@@ -1,0 +1,40 @@
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 36px;
+}
+
+.pageButton {
+  min-width: 46px;
+  padding: 8px 12px;
+  background-color: var(--color-card);
+  border: 3px solid var(--color-ink);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition:
+    translate 150ms,
+    box-shadow 150ms,
+    background-color 150ms;
+}
+
+@media (hover: hover) {
+  .pageButton:hover:not(:disabled) {
+    translate: -2px -2px;
+    box-shadow: 6px 6px 0 var(--color-ink);
+  }
+}
+
+/* A página atual é o botão desabilitado: fica amarela e "afundada". */
+.pageButton:disabled {
+  translate: 2px 2px;
+  background-color: var(--color-blip);
+  box-shadow: 1px 1px 0 var(--color-ink);
+  cursor: default;
+}
