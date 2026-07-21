@@ -42,6 +42,8 @@
 /* Base compartilhada pelos dois botões: o estado apagado. */
 .favoriteButton,
 .watchedButton {
+  /* Âncora do tooltip: o balão se posiciona em relação ao botão. */
+  position: relative;
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -87,6 +89,35 @@
 .favoriteButton:active,
 .watchedButton:active {
   scale: 0.85;
+}
+
+/* Dica ao passar o cursor: um balão via ::after, sem marcação extra no HTML.
+   O texto vem do atributo data-tooltip, então continua morando no componente. */
+.favoriteButton::after,
+.watchedButton::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 4px);
+  right: 0;
+  z-index: 1;
+  padding: 3px 9px;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  border-radius: 8px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  /* Atravessável pelo mouse: o balão nunca rouba o clique do botão. */
+  pointer-events: none;
+  transition: opacity 150ms;
+}
+
+@media (hover: hover) {
+  .favoriteButton:hover::after,
+  .watchedButton:hover::after {
+    opacity: 1;
+  }
 }
 
 .code {

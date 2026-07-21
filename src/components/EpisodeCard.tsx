@@ -26,6 +26,7 @@ export function EpisodeCard({ episode }: EpisodeCardProps) {
           <button
             className={styles.favoriteButton}
             type="button"
+            data-tooltip={isFavorite ? 'Desfavoritar' : 'Favoritar'}
             onClick={() => toggleFavorite(episode.id)}
             aria-pressed={isFavorite}
             aria-label="Favoritar episódio"
@@ -36,6 +37,7 @@ export function EpisodeCard({ episode }: EpisodeCardProps) {
           <button
             className={styles.watchedButton}
             type="button"
+            data-tooltip={isWatched ? 'Desmarcar' : 'Marcar como visto'}
             onClick={() => toggleWatched(episode.id)}
             aria-pressed={isWatched}
             aria-label="Marcar como visto"
