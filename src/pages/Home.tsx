@@ -81,7 +81,7 @@ function EpisodeGridSkeleton() {
   return (
     <div className={styles.grid} aria-hidden>
       {Array.from({ length: 6 }, (_, index) => (
-        <EpisodeCardSkeleton key={index} index={index} />
+        <EpisodeCardSkeleton key={index} />
       ))}
     </div>
   )

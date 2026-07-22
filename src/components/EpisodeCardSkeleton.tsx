@@ -1,16 +1,15 @@
 import styles from './EpisodeCardSkeleton.module.css'
 
-interface EpisodeCardSkeletonProps {
-  /** Escalona o início da animação para as cascas pulsarem em cascata. */
-  index?: number
-}
-
-export function EpisodeCardSkeleton({ index = 0 }: EpisodeCardSkeletonProps) {
+export function EpisodeCardSkeleton() {
   return (
-    <div
-      className={styles.card}
-      style={{ animationDelay: `${index * 90}ms` }}
-      aria-hidden
-    />
+    <div className={styles.card} aria-hidden>
+      <span className={styles.code} />
+      <span className={styles.title} />
+      <span className={`${styles.title} ${styles.titleShort}`} />
+      <div className={styles.meta}>
+        <span className={styles.chip} />
+        <span className={styles.chip} />
+      </div>
+    </div>
   )
 }

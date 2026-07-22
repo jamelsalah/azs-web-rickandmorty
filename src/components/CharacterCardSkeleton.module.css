@@ -1,51 +1,42 @@
-/* Mesma moldura do EpisodeCard real (min-height, padding, borda) para o tamanho
-   bater. Dentro, placeholders cinza mostram a estrutura carregando.
-   A keyframe fica NESTE módulo (o CSS Modules escopa o nome). */
+/* Espelha as medidas do CharacterCard real para o tamanho bater sozinho.
+   A keyframe fica NESTE módulo: o CSS Modules escopa o nome; uma keyframe
+   global viraria uma referência inexistente. */
 .card {
   display: flex;
   flex-direction: column;
-  min-height: 205px;
-  padding: 18px;
   background-color: var(--color-card);
   border: 3px solid var(--color-ink);
-  border-radius: 18px;
-  box-shadow: 6px 6px 0 var(--color-ink);
+  border-radius: 16px;
+  box-shadow: 5px 5px 0 var(--color-ink);
+  overflow: hidden;
 }
 
-.code,
-.title,
-.chip {
+.photo {
+  aspect-ratio: 1 / 1;
   background-color: rgb(22 18 31 / 0.13);
   animation: pulse 1.4s ease-in-out infinite;
 }
 
-.code {
-  width: 96px;
-  height: 22px;
-  border-radius: 999px;
-}
-
-.title {
-  height: 18px;
-  margin-top: 16px;
-  border-radius: 6px;
-}
-
-.titleShort {
-  width: 55%;
-  margin-top: 8px;
-}
-
-.meta {
+.info {
   display: flex;
+  flex-direction: column;
   gap: 8px;
-  margin-top: auto;
+  padding: 12px 14px;
 }
 
-.chip {
-  width: 72px;
-  height: 22px;
-  border-radius: 9px;
+.line {
+  height: 13px;
+  border-radius: 6px;
+  background-color: rgb(22 18 31 / 0.13);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.lineShort {
+  width: 65%;
+}
+
+.lineStatus {
+  width: 45%;
 }
 
 /* opacity de 1 a 0.4: um "respirar" bem mais visível. */
@@ -62,9 +53,8 @@
 /* Mantém o fade mesmo com "reduzir movimento" (é benigno): vence a regra
    global do index.css por ser mais específico + !important. */
 @media (prefers-reduced-motion: reduce) {
-  .code,
-  .title,
-  .chip {
+  .photo,
+  .line {
     animation: pulse 1.4s ease-in-out infinite !important;
   }
 }

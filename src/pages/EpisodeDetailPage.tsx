@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { episodeQuery } from '@/api/episodes'
 import { CharacterCard } from '@/components/CharacterCard'
+import { CharacterCardSkeleton } from '@/components/CharacterCardSkeleton'
 import { EyeIcon, HeartIcon } from '@/components/icons'
 import { formatAirDate, formatEpisodeCode } from '@/lib/formatters'
 import { useEpisodeStore } from '@/store/episodeStore'
@@ -35,12 +36,7 @@ export function EpisodeDetailPage() {
 
         <div className={styles.charactersGrid}>
           {Array.from({ length: 8 }, (_, index) => (
-            <div
-              key={index}
-              className={styles.skeletonCharacter}
-              style={{ animationDelay: `${index * 80}ms` }}
-              aria-hidden
-            />
+            <CharacterCardSkeleton key={index} />
           ))}
         </div>
       </div>

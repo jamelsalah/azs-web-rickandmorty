@@ -41,7 +41,7 @@ export function FavoritesPage() {
         </header>
         <div className={styles.grid} aria-hidden>
           {Array.from({ length: favoriteIds.length }, (_, index) => (
-            <EpisodeCardSkeleton key={index} index={index} />
+            <EpisodeCardSkeleton key={index} />
           ))}
         </div>
       </div>

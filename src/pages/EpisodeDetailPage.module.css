@@ -141,21 +141,25 @@
   gap: 18px;
 }
 
-/* Esqueletos do carregamento: cada bloco pulsa. A keyframe fica neste módulo
-   (o CSS Modules escopa o nome; uma keyframe global vira referência inexistente). */
+/* Esqueletos do cabeçalho ao carregar (a grade usa o CharacterCardSkeleton).
+   A keyframe fica neste módulo (o CSS Modules escopa o nome). */
 .skeletonBack,
 .skeletonCode,
 .skeletonTitle,
 .skeletonChips,
-.skeletonActions,
-.skeletonCharacter {
-  background-color: rgb(255 255 255 / 0.3);
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.skeletonActions {
+  background-color: rgb(22 18 31 / 0.13);
+  animation: pulse 1.4s ease-in-out infinite;
 }
 
+/* opacity de 1 a 0.4: um "respirar" bem mais visível. */
 @keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
   50% {
-    opacity: 0.5;
+    opacity: 0.4;
   }
 }
 
@@ -194,12 +198,16 @@
   border-radius: 999px;
 }
 
-/* Mesma moldura do CharacterCard, na proporção foto-quadrada + faixa de info. */
-.skeletonCharacter {
-  aspect-ratio: 1 / 1.28;
-  border: 3px solid var(--color-ink);
-  border-radius: 16px;
-  box-shadow: 5px 5px 0 var(--color-ink);
+/* Mantém o fade mesmo com "reduzir movimento" (é benigno): vence a regra
+   global do index.css por ser mais específico + !important. */
+@media (prefers-reduced-motion: reduce) {
+  .skeletonBack,
+  .skeletonCode,
+  .skeletonTitle,
+  .skeletonChips,
+  .skeletonActions {
+    animation: pulse 1.4s ease-in-out infinite !important;
+  }
 }
 
 /* Erro: mesma linguagem visual da Home. */
