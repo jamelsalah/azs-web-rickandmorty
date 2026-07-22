@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { EyeIcon, HeartIcon } from '@/components/icons'
 import { formatAirDate, formatEpisodeCode } from '@/lib/formatters'
 import { useEpisodeStore } from '@/store/episodeStore'
@@ -19,6 +21,12 @@ export function EpisodeCard({ episode }: EpisodeCardProps) {
 
   return (
     <article className={styles.card}>
+      <Link
+        to={`/episodio/${episode.id}`}
+        className={styles.cardLink}
+        aria-label={`Ver detalhes de ${episode.name}`}
+      />
+
       <div className={styles.topRow}>
         <span className={styles.code}>{formatEpisodeCode(episode.episode)}</span>
 

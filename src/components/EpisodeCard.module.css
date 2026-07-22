@@ -1,4 +1,6 @@
 .card {
+  /* Âncora do link esticado que cobre o card. */
+  position: relative;
   /* Piso fixo: reserva o espaço do 2º chip ("Visto") em todos os cards, para
      que marcar um episódio não estique a linha inteira do grid. */
   min-height: 205px;
@@ -24,6 +26,15 @@
   }
 }
 
+/* Link invisível que cobre o card inteiro e captura o clique de navegação.
+   Fica na camada de baixo; os botões sobem por cima dele (z-index em .actions). */
+.cardLink {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 18px;
+}
+
 .topRow {
   display: flex;
   align-items: center;
@@ -32,6 +43,9 @@
 }
 
 .actions {
+  /* Acima do link esticado: os botões continuam clicáveis sem navegar. */
+  position: relative;
+  z-index: 1;
   display: flex;
   gap: 2px;
   /* O alvo de toque é maior que o desenho; a margem negativa alinha o
