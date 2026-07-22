@@ -1,0 +1,198 @@
+.page {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: 40px 24px;
+}
+
+/* Voltar: pílula discreta com a mesma sombra dura do resto. */
+.backLink {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: var(--color-card);
+  border: 2.5px solid var(--color-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--color-ink);
+  color: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    translate 120ms,
+    box-shadow 120ms;
+}
+
+@media (hover: hover) {
+  .backLink:hover {
+    translate: -2px -2px;
+    box-shadow: 5px 5px 0 var(--color-ink);
+  }
+}
+
+.header {
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.code {
+  display: inline-block;
+  padding: 3px 13px;
+  background-color: var(--color-portal);
+  border: 2.5px solid var(--color-ink);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 800;
+}
+
+.title {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.chip {
+  padding: 3px 10px;
+  border: 2.5px solid var(--color-ink);
+  border-radius: 9px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.chipDate {
+  background-color: var(--color-plasma);
+}
+
+.chipCharacters {
+  background-color: var(--color-blip);
+  font-variant-numeric: tabular-nums;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background-color: var(--color-card);
+  border: 3px solid var(--color-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--color-ink);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    translate 120ms,
+    box-shadow 120ms,
+    background-color 120ms,
+    color 120ms;
+}
+
+@media (hover: hover) {
+  .actionButton:hover {
+    translate: -2px -2px;
+    box-shadow: 5px 5px 0 var(--color-ink);
+  }
+}
+
+.actionButton:active {
+  translate: 0 0;
+  box-shadow: 2px 2px 0 var(--color-ink);
+}
+
+/* Aceso: o botão ganha a cor do estado e o coração enche. */
+.favoriteButton[aria-pressed='true'] {
+  background-color: var(--color-heart);
+  color: var(--color-card);
+}
+
+.favoriteButton[aria-pressed='true'] svg {
+  fill: currentColor;
+}
+
+.watchedButton[aria-pressed='true'] {
+  background-color: var(--color-watched);
+  color: var(--color-card);
+}
+
+.sectionTitle {
+  margin-bottom: 18px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.charactersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 18px;
+}
+
+/* Carregando e erro: mesma linguagem visual da Home. */
+.loading {
+  padding: 40px;
+  text-align: center;
+  color: var(--color-ink-soft);
+  font-weight: 700;
+}
+
+.errorBox {
+  padding: 40px;
+  text-align: center;
+  background-color: var(--color-card);
+  border: 3px solid var(--color-ink);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 var(--color-ink);
+}
+
+.errorBadge {
+  display: inline-block;
+  padding: 2px 12px;
+  background-color: var(--color-alert);
+  border: 2.5px solid var(--color-ink);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.errorTitle {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.errorMessage {
+  margin-top: 8px;
+  color: var(--color-ink-soft);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.errorBox .backLink {
+  margin-top: 20px;
+}
+
+/* Equivalente ao breakpoint "sm" da Home. */
+@media (min-width: 640px) {
+  .page {
+    padding-block: 56px;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+}

@@ -7,6 +7,8 @@ import { EyeIcon, HeartIcon } from '@/components/icons'
 import { formatAirDate, formatEpisodeCode } from '@/lib/formatters'
 import { useEpisodeStore } from '@/store/episodeStore'
 
+import styles from './EpisodeDetailPage.module.css'
+
 export function EpisodeDetailPage() {
   const { id } = useParams()
   const episodeId = id ?? ''
@@ -20,15 +22,24 @@ export function EpisodeDetailPage() {
   const toggleWatched = useEpisodeStore((state) => state.toggleWatched)
 
   if (isPending) {
-    return <p>Carregando episódio…</p>
+    return (
+      <div className={styles.page}>
+        <p className={styles.loading}>Carregando episódio…</p>
+      </div>
+    )
   }
 
   if (isError) {
     return (
-      <div>
-        <p>Não deu para carregar o episódio.</p>
-        <p>{error.message}</p>
-        <Link to="/">Voltar para a lista</Link>
+      <div className={styles.page}>
+        <div className={styles.errorBox}>
+          <span className={styles.errorBadge}>Erro</span>
+          <p className={styles.errorTitle}>Não deu para carregar o episódio</p>
+          <p className={styles.errorMessage}>{error.message}</p>
+          <Link to="/" className={styles.backLink}>
+            ← Voltar para a lista
+          </Link>
+        </div>
       </div>
     )
   }
@@ -36,41 +47,52 @@ export function EpisodeDetailPage() {
   const characterCount = episode.characters.length
 
   return (
-    <div>
-      <Link to="/">← Voltar</Link>
+    <div className={styles.page}>
+      <Link to="/" className={styles.backLink}>
+        ← Voltar
+      </Link>
 
-      <header>
-        <span>{formatEpisodeCode(episode.episode)}</span>
-        <h1>{episode.name}</h1>
-        <span>{formatAirDate(episode.air_date)}</span>
-        <span>
-          {characterCount} {characterCount === 1 ? 'personagem' : 'personagens'}
-        </span>
+      <header className={styles.header}>
+        <span className={styles.code}>{formatEpisodeCode(episode.episode)}</span>
+        <h1 className={styles.title}>{episode.name}</h1>
 
-        <button
-          type="button"
-          onClick={() => toggleFavorite(episodeId)}
-          aria-pressed={isFavorite}
-          aria-label="Favoritar episódio"
-        >
-          <HeartIcon />
-          {isFavorite ? 'Favoritado' : 'Favoritar'}
-        </button>
+        <div className={styles.chips}>
+          <span className={`${styles.chip} ${styles.chipDate}`}>
+            {formatAirDate(episode.air_date)}
+          </span>
+          <span className={`${styles.chip} ${styles.chipCharacters}`}>
+            {characterCount} {characterCount === 1 ? 'personagem' : 'personagens'}
+          </span>
+        </div>
 
-        <button
-          type="button"
-          onClick={() => toggleWatched(episodeId)}
-          aria-pressed={isWatched}
-          aria-label="Marcar como visto"
-        >
-          <EyeIcon />
-          {isWatched ? 'Visto' : 'Marcar como visto'}
-        </button>
+        <div className={styles.actions}>
+          <button
+            className={`${styles.actionButton} ${styles.favoriteButton}`}
+            type="button"
+            onClick={() => toggleFavorite(episodeId)}
+            aria-pressed={isFavorite}
+            aria-label="Favoritar episódio"
+          >
+            <HeartIcon />
+            {isFavorite ? 'Favoritado' : 'Favoritar'}
+          </button>
+
+          <button
+            className={`${styles.actionButton} ${styles.watchedButton}`}
+            type="button"
+            onClick={() => toggleWatched(episodeId)}
+            aria-pressed={isWatched}
+            aria-label="Marcar como visto"
+          >
+            <EyeIcon />
+            {isWatched ? 'Visto' : 'Marcar como visto'}
+          </button>
+        </div>
       </header>
 
       <section>
-        <h2>Personagens</h2>
-        <div>
+        <h2 className={styles.sectionTitle}>Personagens</h2>
+        <div className={styles.charactersGrid}>
           {episode.characters.map((character) => (
             <CharacterCard key={character.id} character={character} />
           ))}
