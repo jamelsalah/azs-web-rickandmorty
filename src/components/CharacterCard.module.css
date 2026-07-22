@@ -1,0 +1,78 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-card);
+  border: 3px solid var(--color-ink);
+  border-radius: 16px;
+  box-shadow: 5px 5px 0 var(--color-ink);
+  /* A foto encosta na borda; o overflow faz ela respeitar o canto arredondado. */
+  overflow: hidden;
+  transition:
+    translate 150ms,
+    box-shadow 150ms;
+}
+
+/* Mesma "elevação" do card da Home ao passar o mouse. translate, não transform. */
+@media (hover: hover) {
+  .card:hover {
+    translate: -3px -3px;
+    box-shadow: 8px 8px 0 var(--color-ink);
+  }
+}
+
+.photo {
+  width: 100%;
+  /* Quadrada e sem distorcer, independente do tamanho original. */
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-bottom: 3px solid var(--color-ink);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.species {
+  color: var(--color-ink-soft);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* Status = ponto colorido + texto. A cor vem do data-status; o texto já chega
+   traduzido do componente. Sem borda: o card já tem a moldura forte. */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.status::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  /* "Desconhecido" é o padrão; os outros dois sobrescrevem abaixo. */
+  background-color: var(--color-ink-soft);
+}
+
+.status[data-status='Alive']::before {
+  background-color: var(--color-watched);
+}
+
+.status[data-status='Dead']::before {
+  background-color: var(--color-heart);
+}
