@@ -1,3 +1,5 @@
+import type { CharacterStatus } from '@/types/api'
+
 const airDateFormatter = new Intl.DateTimeFormat('pt-BR', {
   day: '2-digit',
   month: 'short',
@@ -37,4 +39,15 @@ export function formatEpisodeCode(code: string): string {
   }
 
   return `Temporada ${Number(match[1])} · Ep. ${Number(match[2])}`
+}
+
+/** Status cru da API -> rótulo em pt-BR para a tela. */
+export function formatCharacterStatus(status: CharacterStatus): string {
+  if (status === 'Alive') {
+    return 'Vivo'
+  }
+  if (status === 'Dead') {
+    return 'Morto'
+  }
+  return 'Desconhecido'
 }
