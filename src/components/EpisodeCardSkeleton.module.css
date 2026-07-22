@@ -1,10 +1,18 @@
 /* Casca do card enquanto carrega: mesma moldura do card real, sem conteúdo.
-   A animação `pulse` mora no index.css (global), reusada por todos os esqueletos. */
+   A keyframe fica NESTE módulo de propósito: o CSS Modules renomeia tanto a
+   definição quanto a referência com o mesmo hash, então elas casam. Uma keyframe
+   global não funcionaria — a referência viraria um nome escopado inexistente. */
 .card {
   min-height: 205px;
-  background-color: rgb(255 255 255 / 0.5);
+  background-color: rgb(255 255 255 / 0.3);
   border: 3px solid var(--color-ink);
   border-radius: 18px;
   box-shadow: 6px 6px 0 var(--color-ink);
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
 }
