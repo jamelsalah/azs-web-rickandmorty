@@ -65,10 +65,7 @@ A aplicação sobe em **http://localhost:3005**.
 | **CSS Modules** | Estilo e responsividade | Nativo do Vite, sem dependência extra |
 | **fetch nativo** | Transporte GraphQL | Endpoint único, sem necessidade de Apollo/axios |
 
-**Sobre a API** (`https://rickandmortyapi.com/graphql`): é **somente leitura** (sem mutations),
-sempre via **POST**, e responde **HTTP 200 mesmo em erro** (a falha vem em `json.errors`). Por
-isso todo acesso passa por um cliente centralizado que trata esses casos, e favoritos/vistos
-são estado local — não algo salvo na API.
+
 
 ---
 
