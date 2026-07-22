@@ -24,7 +24,25 @@ export function EpisodeDetailPage() {
   if (isPending) {
     return (
       <div className={styles.page}>
-        <p className={styles.loading}>Carregando episódio…</p>
+        <div className={styles.skeletonBack} aria-hidden />
+
+        <header className={styles.header}>
+          <div className={styles.skeletonCode} aria-hidden />
+          <div className={styles.skeletonTitle} aria-hidden />
+          <div className={styles.skeletonChips} aria-hidden />
+          <div className={styles.skeletonActions} aria-hidden />
+        </header>
+
+        <div className={styles.charactersGrid}>
+          {Array.from({ length: 8 }, (_, index) => (
+            <div
+              key={index}
+              className={styles.skeletonCharacter}
+              style={{ animationDelay: `${index * 80}ms` }}
+              aria-hidden
+            />
+          ))}
+        </div>
       </div>
     )
   }

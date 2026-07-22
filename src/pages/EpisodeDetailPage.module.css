@@ -141,14 +141,61 @@
   gap: 18px;
 }
 
-/* Carregando e erro: mesma linguagem visual da Home. */
-.loading {
-  padding: 40px;
-  text-align: center;
-  color: var(--color-ink-soft);
-  font-weight: 700;
+/* Esqueletos do carregamento: cada bloco pulsa; a animação `pulse` é global. */
+.skeletonBack,
+.skeletonCode,
+.skeletonTitle,
+.skeletonChips,
+.skeletonActions,
+.skeletonCharacter {
+  background-color: rgb(255 255 255 / 0.5);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+/* Cada casca imita, em tamanho e forma, o elemento real que vai substituir. */
+.skeletonBack {
+  width: 96px;
+  height: 33px;
+  border-radius: 999px;
+}
+
+.skeletonCode {
+  width: 150px;
+  height: 26px;
+  border-radius: 999px;
+}
+
+.skeletonTitle {
+  width: min(70%, 420px);
+  height: 40px;
+  margin-top: 14px;
+  border-radius: 10px;
+}
+
+.skeletonChips {
+  width: 240px;
+  height: 26px;
+  margin-top: 16px;
+  border-radius: 9px;
+}
+
+.skeletonActions {
+  width: 320px;
+  max-width: 100%;
+  height: 44px;
+  margin-top: 22px;
+  border-radius: 999px;
+}
+
+/* Mesma moldura do CharacterCard, na proporção foto-quadrada + faixa de info. */
+.skeletonCharacter {
+  aspect-ratio: 1 / 1.28;
+  border: 3px solid var(--color-ink);
+  border-radius: 16px;
+  box-shadow: 5px 5px 0 var(--color-ink);
+}
+
+/* Erro: mesma linguagem visual da Home. */
 .errorBox {
   padding: 40px;
   text-align: center;
