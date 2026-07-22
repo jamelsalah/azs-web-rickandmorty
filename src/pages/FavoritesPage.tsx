@@ -5,6 +5,8 @@ import { favoriteEpisodesQuery } from '@/api/episodes'
 import { EpisodeCard } from '@/components/EpisodeCard'
 import { useEpisodeStore } from '@/store/episodeStore'
 
+import styles from './FavoritesPage.module.css'
+
 export function FavoritesPage() {
   const favoriteIds = useEpisodeStore((state) => state.favoriteIds)
   const { data: episodes, isPending, isError, error } = useQuery(
@@ -16,35 +18,50 @@ export function FavoritesPage() {
   // ANTES de checar o "carregando".
   if (favoriteIds.length === 0) {
     return (
-      <div>
-        <h1>Favoritos</h1>
-        <p>Você ainda não favoritou nenhum episódio.</p>
-        <Link to="/">Ver episódios</Link>
+      <div className={styles.page}>
+        <header className={styles.header}>
+          <h1 className={styles.title}>Favoritos</h1>
+        </header>
+        <p className={styles.emptyState}>
+          Você ainda não favoritou nenhum episódio.{' '}
+          <Link to="/" className={styles.emptyLink}>
+            Ver episódios
+          </Link>
+        </p>
       </div>
     )
   }
 
   if (isPending) {
-    return <p>Carregando favoritos…</p>
+    return (
+      <div className={styles.page}>
+        <p className={styles.loading}>Carregando favoritos…</p>
+      </div>
+    )
   }
 
   if (isError) {
     return (
-      <div>
-        <p>Não deu para carregar os favoritos.</p>
-        <p>{error.message}</p>
+      <div className={styles.page}>
+        <div className={styles.errorBox}>
+          <span className={styles.errorBadge}>Erro</span>
+          <p className={styles.errorTitle}>Não deu para carregar os favoritos</p>
+          <p className={styles.errorMessage}>{error.message}</p>
+        </div>
       </div>
     )
   }
 
   return (
-    <div>
-      <h1>Favoritos</h1>
-      <span>
-        {episodes.length} {episodes.length === 1 ? 'episódio' : 'episódios'}
-      </span>
+    <div className={styles.page}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Favoritos</h1>
+        <span className={styles.count}>
+          {episodes.length} {episodes.length === 1 ? 'episódio' : 'episódios'}
+        </span>
+      </header>
 
-      <div>
+      <div className={styles.grid}>
         {episodes.map((episode) => (
           <EpisodeCard key={episode.id} episode={episode} />
         ))}

@@ -1,0 +1,103 @@
+.page {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: 40px 24px;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Contador no mesmo formato do da Home (pílula amarela com sombra dura). */
+.count {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 4px 14px;
+  background-color: var(--color-blip);
+  border: 2.5px solid var(--color-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--color-ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+/* Mesma grade fluida da Home. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 22px;
+}
+
+/* Estado vazio: borda tracejada = "vazio", sem peso (igual à busca sem resultado). */
+.emptyState {
+  padding: 36px;
+  text-align: center;
+  color: var(--color-ink-soft);
+  background-color: var(--color-card);
+  border: 3px dashed var(--color-ink);
+  border-radius: 18px;
+  font-weight: 700;
+}
+
+.emptyLink {
+  color: var(--color-ink);
+  text-decoration: underline;
+}
+
+.loading {
+  padding: 40px;
+  text-align: center;
+  color: var(--color-ink-soft);
+  font-weight: 700;
+}
+
+/* Erro: mesmo bloco sólido com sombra da Home/detalhe. */
+.errorBox {
+  padding: 40px;
+  text-align: center;
+  background-color: var(--color-card);
+  border: 3px solid var(--color-ink);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 var(--color-ink);
+}
+
+.errorBadge {
+  display: inline-block;
+  padding: 2px 12px;
+  background-color: var(--color-alert);
+  border: 2.5px solid var(--color-ink);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.errorTitle {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.errorMessage {
+  margin-top: 8px;
+  color: var(--color-ink-soft);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+@media (min-width: 640px) {
+  .page {
+    padding-block: 56px;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+}
