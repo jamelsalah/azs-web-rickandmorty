@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { favoriteEpisodesQuery } from '@/api/episodes'
 import { EpisodeCard } from '@/components/EpisodeCard'
+import { EpisodeCardSkeleton } from '@/components/EpisodeCardSkeleton'
 import { useEpisodeStore } from '@/store/episodeStore'
 
 import styles from './FavoritesPage.module.css'
@@ -35,7 +36,14 @@ export function FavoritesPage() {
   if (isPending) {
     return (
       <div className={styles.page}>
-        <p className={styles.loading}>Carregando favoritos…</p>
+        <header className={styles.header}>
+          <h1 className={styles.title}>Favoritos</h1>
+        </header>
+        <div className={styles.grid} aria-hidden>
+          {Array.from({ length: favoriteIds.length }, (_, index) => (
+            <EpisodeCardSkeleton key={index} index={index} />
+          ))}
+        </div>
       </div>
     )
   }

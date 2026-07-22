@@ -51,13 +51,6 @@
   text-decoration: underline;
 }
 
-.loading {
-  padding: 40px;
-  text-align: center;
-  color: var(--color-ink-soft);
-  font-weight: 700;
-}
-
 /* Erro: mesmo bloco sólido com sombra da Home/detalhe. */
 .errorBox {
   padding: 40px;
