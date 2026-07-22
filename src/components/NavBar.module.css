@@ -1,0 +1,48 @@
+.nav {
+  /* Barra fixada visualmente no topo, separada do conteúdo por um traço grosso. */
+  background-color: var(--color-card);
+  border-bottom: 3px solid var(--color-ink);
+}
+
+/* Alinha os links ao mesmo container das páginas (72rem, padding lateral 24px). */
+.inner {
+  display: flex;
+  gap: 10px;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: 14px 24px;
+}
+
+/* Cada aba é uma pílula, na mesma linguagem dos outros elementos. */
+.link {
+  padding: 7px 18px;
+  background-color: var(--color-card);
+  border: 2.5px solid var(--color-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--color-ink);
+  color: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    translate 120ms,
+    box-shadow 120ms,
+    background-color 120ms;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    translate: -2px -2px;
+    box-shadow: 5px 5px 0 var(--color-ink);
+  }
+}
+
+.link:active {
+  translate: 0 0;
+  box-shadow: 1px 1px 0 var(--color-ink);
+}
+
+/* Aba atual: preenchida com o amarelo de destaque. */
+.active {
+  background-color: var(--color-blip);
+}
