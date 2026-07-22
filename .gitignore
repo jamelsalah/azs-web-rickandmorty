@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Cache local da CLI do Firebase (não faz parte da entrega)
+.firebase
+
 # Variáveis de ambiente
 .env
 .env.*
