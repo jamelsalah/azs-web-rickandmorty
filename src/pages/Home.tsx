@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { episodesQuery } from '@/api/episodes'
 import { EpisodeCard } from '@/components/EpisodeCard'
+import { EpisodeCardSkeleton } from '@/components/EpisodeCardSkeleton'
 import { Pagination } from '@/components/Pagination'
 import { SearchField } from '@/components/SearchField'
 import { useDebouncedValue } from '@/hooks/useDebouncedValue'
@@ -80,11 +81,7 @@ function EpisodeGridSkeleton() {
   return (
     <div className={styles.grid} aria-hidden>
       {Array.from({ length: 6 }, (_, index) => (
-        <div
-          key={index}
-          className={styles.skeletonCard}
-          style={{ animationDelay: `${index * 90}ms` }}
-        />
+        <EpisodeCardSkeleton key={index} index={index} />
       ))}
     </div>
   )

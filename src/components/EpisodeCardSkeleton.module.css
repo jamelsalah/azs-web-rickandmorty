@@ -1,0 +1,10 @@
+/* Casca do card enquanto carrega: mesma moldura do card real, sem conteúdo.
+   A animação `pulse` mora no index.css (global), reusada por todos os esqueletos. */
+.card {
+  min-height: 205px;
+  background-color: rgb(255 255 255 / 0.5);
+  border: 3px solid var(--color-ink);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 var(--color-ink);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

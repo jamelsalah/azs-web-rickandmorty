@@ -68,6 +68,13 @@ input {
   outline-offset: 2px;
 }
 
+/* Animação compartilhada pelos esqueletos de carregamento. */
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

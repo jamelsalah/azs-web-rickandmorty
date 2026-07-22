@@ -88,22 +88,6 @@
   font-weight: 700;
 }
 
-.skeletonCard {
-  height: 150px;
-  background-color: rgb(255 255 255 / 0.5);
-  border: 3px solid var(--color-ink);
-  border-radius: 18px;
-  box-shadow: 6px 6px 0 var(--color-ink);
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Mesma curva e duração do animate-pulse do Tailwind. */
-@keyframes pulse {
-  50% {
-    opacity: 0.5;
-  }
-}
-
 /* Equivalente ao breakpoint "sm" do Tailwind. */
 @media (min-width: 640px) {
   .page {
